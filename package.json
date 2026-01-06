@@ -1,0 +1,15 @@
+{
+  "name": "award-pas-savings-invest-app-root",
+  "private": true,
+  "scripts": {
+    "dev": "npm --workspace tmp-app run dev",
+    "build": "npm --workspace tmp-app run build",
+    "start": "npm --workspace tmp-app run start",
+    "lint": "npm --workspace tmp-app run lint",
+    "test": "npm --workspace tmp-app run test",
+    "test:watch": "npm --workspace tmp-app run test:watch"
+  },
+  "workspaces": [
+    "tmp-app"
+  ]
+}
