@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description:
     "A modern savings and investment MVP that turns goals into confident plans.",
   icons: {
-    icon: "/appicon.png",
+    icon: "/favicon.ico",
     apple: "/appicon.png",
   },
   openGraph: {
