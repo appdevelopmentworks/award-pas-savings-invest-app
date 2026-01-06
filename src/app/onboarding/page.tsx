@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { computePlan } from "@/lib/calc/plan";
 import { computeTodos } from "@/lib/calc/todos";
@@ -23,6 +24,7 @@ import {
 } from "@/lib/constants/defaults";
 import { Button } from "@/components/ui/button";
 import type {
+  GoalInput,
   GoalType,
   LifeEventType,
   TodoWithStatus,
@@ -48,7 +50,7 @@ const createGoal = () => ({
   horizonMonths: 36,
 });
 
-const normalizeGoal = (goal: Partial<ReturnType<typeof createGoal>>) => ({
+const normalizeGoal = (goal: Partial<GoalInput>) => ({
   id: goal.id ?? createId(),
   type: goal.type ?? ("FIRST_1M" as GoalType),
   label: goal.label ?? "",
@@ -106,8 +108,7 @@ export default function OnboardingPage() {
   useEffect(() => {
     const saved = loadUserInput();
     if (saved) {
-      const legacyGoal = (saved as UserInput & { goal?: Partial<UserInput["goals"][number]> })
-        .goal;
+      const legacyGoal = (saved as UserInput & { goal?: Partial<GoalInput> }).goal;
       const normalizedGoals = saved.goals
         ? saved.goals.map((goal) => normalizeGoal(goal))
         : legacyGoal
@@ -405,7 +406,7 @@ export default function OnboardingPage() {
           </p>
         </div>
         <Button asChild size="sm" variant="secondary" className="hidden md:inline-flex">
-          <a href="/">LPへ戻る</a>
+          <Link href="/">LPへ戻る</Link>
         </Button>
       </header>
 
